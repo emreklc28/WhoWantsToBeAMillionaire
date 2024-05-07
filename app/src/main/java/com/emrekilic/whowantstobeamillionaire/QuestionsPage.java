@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 public class QuestionsPage extends BaseFragment{
 
     public static QuestionsPage newInstance(){
@@ -24,6 +23,9 @@ public class QuestionsPage extends BaseFragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
 
 
     }
