@@ -43,6 +43,7 @@ public class HomeFragment extends BaseFragment{
         leaderbord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                addFragment(LeaderboardPage.newInstance());
 
             }
         });

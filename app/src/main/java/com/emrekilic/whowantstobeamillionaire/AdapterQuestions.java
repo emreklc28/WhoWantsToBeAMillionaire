@@ -8,17 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RecyclerviewQuestions extends RecyclerView.Adapter<RecyclerviewQuestions.QuestionsHolder> {
+public class AdapterQuestions extends RecyclerView.Adapter<AdapterQuestions.QuestionsHolder> {
 
     @NonNull
     @Override
     public QuestionsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_row,parent,false);
-        return new QuestionsHolder(view);
+        return new com.emrekilic.whowantstobeamillionaire.AdapterQuestions.QuestionsHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull QuestionsHolder holder, int position) {
+
 
     }
 
@@ -27,7 +28,7 @@ public class RecyclerviewQuestions extends RecyclerView.Adapter<RecyclerviewQues
         return 0;
     }
 
-    public class QuestionsHolder extends RecyclerView.ViewHolder{
+    public  class QuestionsHolder extends RecyclerView.ViewHolder{
 
 
         public QuestionsHolder(@NonNull View itemView) {

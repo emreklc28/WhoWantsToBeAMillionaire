@@ -46,22 +46,27 @@
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="44dp"
-        android:backgroundTint="#F8C660"
+        android:background="@drawable/button_main_mage"
         android:text="Leaderbord"
-        app:cornerRadius="20dp"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:fontFamily="@font/baloosemibold"
+        android:textAllCaps="false"
         android:layout_marginTop="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/start"
+        android:textAllCaps="false"
         android:layout_width="383dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="120dp"
-        android:backgroundTint="#F8C660"
+        android:textColor="@color/white"
+        android:background="@drawable/button_main_mage"
         android:text="Start"
-        app:cornerRadius="20dp"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
