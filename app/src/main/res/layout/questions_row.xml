@@ -21,7 +21,7 @@
             />
 
         <ImageView
-            android:id="@+id/yüzde_elli_joker"
+            android:id="@+id/yuzde_elli_joker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="252dp"

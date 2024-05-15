@@ -8,6 +8,16 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class QuestionsPage extends BaseFragment{
 
     public static QuestionsPage newInstance(){
@@ -16,6 +26,8 @@ public class QuestionsPage extends BaseFragment{
     }
 
     Button answer_button;
+
+
 
     @Nullable
     @Override
@@ -27,10 +39,20 @@ public class QuestionsPage extends BaseFragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         answer_button=view.findViewById(R.id.answer_button);
         answer_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
+
+
+
+
+
                 addFragment(MoneyTree.newInstance());
             }
         });
@@ -40,4 +62,7 @@ public class QuestionsPage extends BaseFragment{
 
 
     }
+
+
+
 }
