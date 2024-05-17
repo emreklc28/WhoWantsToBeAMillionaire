@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterMoneyTree extends RecyclerView.Adapter<AdapterMoneyTree.MoneyTreeHolder> {
 
+
+
     public AdapterMoneyTree() {
 
     }

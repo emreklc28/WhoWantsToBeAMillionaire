@@ -14,9 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MoneyTree extends BaseFragment{
 
-    public static MoneyTree newInstance(){
+    private int currentQuestion;
 
-        return new MoneyTree();
+    public static MoneyTree newInstance(int currentQuestion){
+        MoneyTree fragment=new MoneyTree();
+        fragment.currentQuestion=currentQuestion;
+
+        return fragment;
     }
 
     Button next_button;
@@ -47,7 +51,7 @@ public class MoneyTree extends BaseFragment{
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFragment(QuestionsPage.newInstance());
+                //addFragment(QuestionsPage.newInstance());
             }
         });
 

@@ -10,10 +10,21 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class HomeFragment extends BaseFragment{
     public static HomeFragment newInstance(){
         return new HomeFragment();
     }
+
+    private List<DataMain> allQuestions = new ArrayList<>();
+
 
 
     @Nullable
@@ -35,7 +46,10 @@ public class HomeFragment extends BaseFragment{
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFragment(QuestionsPage.newInstance());
+                loadQuestions("easy",5);
+
+
+
             }
         });
 
@@ -47,6 +61,34 @@ public class HomeFragment extends BaseFragment{
 
             }
         });
+
+
+    }
+
+    private void loadQuestions(String difficulty,int limit){
+        DataAPI dataAPI=Config.getRetrofit().create(DataAPI.class);
+        dataAPI.getQuestion(limit,difficulty,Config.API_KEY).enqueue(new Callback<List<DataMain>>() {
+            @Override
+            public void onResponse(Call<List<DataMain>> call, Response<List<DataMain>> response) {
+                if (response.isSuccessful()){
+                    allQuestions.addAll(response.body());
+                    if (difficulty.equals("easy")) {
+                        loadQuestions("medium",5);
+                    } else if (difficulty.equals("medium")) {
+                        loadQuestions("hard",3);
+                    } else if (difficulty.equals("hard")) {
+                        addFragment(QuestionsPage.newInstance(allQuestions,0));
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<DataMain>> call, Throwable t) {
+
+            }
+        });
+
 
 
     }
