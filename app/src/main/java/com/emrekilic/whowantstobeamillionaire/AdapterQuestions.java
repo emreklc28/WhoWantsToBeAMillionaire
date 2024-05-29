@@ -1,5 +1,6 @@
 package com.emrekilic.whowantstobeamillionaire;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -20,11 +22,23 @@ public class AdapterQuestions extends RecyclerView.Adapter<AdapterQuestions.Ques
 
     List<AnswerModel> answerModelList;
     private AnswerModel checkedAnswer;
+    Answer answer;
+
+
+
+
 
     public void setAnswerModelList(List<AnswerModel> answerModelList){
         this.answerModelList=answerModelList;
         notifyDataSetChanged();
     }
+
+    public void setAnswer(Answer answer){
+        this.answer=answer;
+        notifyDataSetChanged();
+    }
+
+
 
     Context mContext;
     public AdapterQuestions(Context mContext) {
@@ -36,22 +50,34 @@ public class AdapterQuestions extends RecyclerView.Adapter<AdapterQuestions.Ques
         return checkedAnswer;
     }
 
+    public Answer getAnser(){
+        Toast.makeText(mContext, "Tıklandı", Toast.LENGTH_SHORT).show();
+        return answer;
+    }
+
     @NonNull
     @Override
     public QuestionsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_row,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.answer_row,parent,false);
         return new QuestionsHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuestionsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuestionsHolder holder, @SuppressLint("RecyclerView") int position) {
 
         AnswerModel model = answerModelList.get(position);
+        holder.answer1.setText(answerModelList.get(position).getQuestion());
 
         if (model.isSelected()) {
-            //backround
-        } else {
+            holder.answer1.setBackgroundResource(R.drawable.clicked_answer);
+            holder.imageView1.setVisibility(View.GONE);
+            holder.imageView2.setVisibility(View.VISIBLE);
+            
 
+        } else {
+            holder.answer1.setBackgroundResource(R.drawable.text_view_rectangle_answers);
+            holder.imageView1.setVisibility(View.VISIBLE);
+            holder.imageView2.setVisibility(View.GONE);
         }
 
         holder.answer1.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +88,20 @@ public class AdapterQuestions extends RecyclerView.Adapter<AdapterQuestions.Ques
 
                 for (AnswerModel model : answerModelList) {
                     if (i == position) {
+
                         model.setSelected(true);
+
+                        holder.answer1.setText(answerModelList.get(position).getQuestion());
+
+
+                        if (model.isCorrectAnswer()){
+
+                        }
+
+
                     } else {
                         model.setSelected(false);
+
                     }
                     i++;
                 }
@@ -75,32 +112,25 @@ public class AdapterQuestions extends RecyclerView.Adapter<AdapterQuestions.Ques
 
     }
 
+
     @Override
     public int getItemCount() {
-        return 0;
+        return answerModelList.size();
     }
 
     public static class QuestionsHolder extends RecyclerView.ViewHolder{
 
-        TextView text_questions,answer1,answer2,answer3,answer4,time_text_view;
-        ImageView cift_cevap_joker,yuzde_elli_joker;
-        ProgressBar progress_bar_counter;
+        TextView answer1;
+
+        ImageView imageView1,imageView2;
 
 
         public QuestionsHolder(@NonNull View itemView) {
             super(itemView);
 
-            text_questions=itemView.findViewById(R.id.text_questions);
             answer1=itemView.findViewById(R.id.answer_1);
-            answer2=itemView.findViewById(R.id.answer_2);
-            answer3=itemView.findViewById(R.id.answer_3);
-            answer4=itemView.findViewById(R.id.answer_4);
-            time_text_view=itemView.findViewById(R.id.time_text_view);
-            cift_cevap_joker=itemView.findViewById(R.id.cift_cevap_joker);
-            yuzde_elli_joker=itemView.findViewById(R.id.yuzde_elli_joker);
-            progress_bar_counter=itemView.findViewById(R.id.progress_bar_counter);
-
-
+            imageView1=itemView.findViewById(R.id.empty_answer_circle);
+            imageView2=itemView.findViewById(R.id.clicked_answer_circle);
 
         }
     }

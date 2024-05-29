@@ -48,8 +48,6 @@ public class HomeFragment extends BaseFragment{
             public void onClick(View view) {
                 loadQuestions("easy",5);
 
-
-
             }
         });
 

@@ -8,8 +8,6 @@ import retrofit2.http.Query;
 
 public interface DataAPI {
     @GET("questions")
-    //Call<DataMain> getQuestion(@Query("question")String question);
-    //Call<DataMain> getQuestion();
     Call<List<DataMain>> getQuestion(@Query("limit") int limit, @Query("difficulty") String difficulty, @Query("apiKey") String apiKey);
 
 

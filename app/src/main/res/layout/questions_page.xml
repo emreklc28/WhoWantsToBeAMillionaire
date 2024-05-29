@@ -8,14 +8,62 @@
     tools:ignore="MissingClass">
 
 
-    <TextView
 
-        android:id="@+id/question"
+
+    <TextView
+        android:id="@+id/questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:padding="15dp"
+        android:fontFamily="@font/baloosemibold"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#000000"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/text_view_rectangle_questions"
+        android:gravity="center_vertical"
+        android:text="sorular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar_counter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/text_view_circle"
+        android:indeterminateOnly="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:text="30"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/recycler_view_answerContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toTopOf="@id/answer_button"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recycler_view_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/answer_button"

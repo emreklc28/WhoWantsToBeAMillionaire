@@ -15,7 +15,7 @@ public class AnswerModel {
     }
 
     public String getQuestion() {
-        return question;
+        return question == null ? "" : question;
     }
 
     public void setQuestion(String question) {
